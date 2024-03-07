@@ -4,3 +4,4 @@
 
 namespace: 
   name: test
+  dummy-value: dummy 
