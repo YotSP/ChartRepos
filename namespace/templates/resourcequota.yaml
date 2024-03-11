@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: {{ .Values.rq.nameCPU }}
+  namespace: {{ .Values.namespace.name }}
+spec:
+  hard:
+    requests.cpu: {{ .Values.rq.rCPU }}
+    limits.cpu: {{ .Values.rq.lCPU }}
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: {{ .Values.rq.nameMEM }}
+  namespace: {{ .Values.namespace.name }}
+spec:
+  hard:
+    requests.memory: {{ .Values.rq.rMEM }}
+    limits.memory: {{ .Values.rq.lMEM }}
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: {{ .Values.rq.nameOBJ }}
+  namespace: {{ .Values.namespace.name }}
+spec:
+  hard:
+    pods: {{ .Values.rq.pods }}

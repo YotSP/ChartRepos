@@ -2,6 +2,24 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+nameOverride: nameoverridevar
+
 namespace: 
   name: test
-  dummy-value: dummy 
+
+tallas:
+  tCPU: M
+  tMEM: L
+  tOBJ: S
+
+rq:
+  nameCPU: rq-cpu-m
+  rCPU: '500m'
+  lCPU: '2'
+  nameMEM: rq-mem-m
+  rMEM: '1Gi'
+  lMEM: '2Gi'
+  nameOBJ: rq-obj-s
+  pods: '4'
+
+
