@@ -1,28 +1,112 @@
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: {{ .Values.rq.nameCPU }}
+  name: rq- {{ .Values.namespace.name }}
   namespace: {{ .Values.namespace.name }}
 spec:
   hard:
-    requests.cpu: {{ .Values.rq.rCPU }}
-    limits.cpu: {{ .Values.rq.lCPU }}
----
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: {{ .Values.rq.nameMEM }}
-  namespace: {{ .Values.namespace.name }}
-spec:
-  hard:
-    requests.memory: {{ .Values.rq.rMEM }}
-    limits.memory: {{ .Values.rq.lMEM }}
----
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: {{ .Values.rq.nameOBJ }}
-  namespace: {{ .Values.namespace.name }}
-spec:
-  hard:
-    pods: {{ .Values.rq.pods }}
+# Tallas CPU
+{{- if .Values.tallas.tCPU eq "M" }}
+    requests.cpu: 350m
+    limits.cpu: 500m
+{{- else if .Values.tallas.tCPU eq "L" }}
+    requests.cpu: 675m
+    limits.cpu: 1
+{{- else if .Values.tallas.tCPU eq "XL" }}
+    requests.cpu: 1350m
+    limits.cpu: 2
+{{- else if .Values.tallas.tCPU eq "2XL" }}
+    requests.cpu: 3350m
+    limits.cpu: 5
+{{- else if .Values.tallas.tCPU eq "3XL" }}
+    requests.cpu: 6675m
+    limits.cpu: 10
+#{{- else if .Values.tallas.tCPU eq "S" }}
+{{- else }}
+    requests.cpu: 175m
+    limits.cpu: 250m
+{{- end }}
+
+# Tallas Memoria
+{{- if .Values.tallas.tMEM eq "S" }}
+    requests.memory: 2Gi
+    limits.memory: 3Gi
+{{- else if .Values.tallas.tMEM eq "M" }}
+    requests.memory: 4Gi
+    limits.memory: 6Gi
+{{- else if .Values.tallas.tMEM eq "L" }}
+    requests.memory: 8Gi
+    limits.memory: 12Gi
+{{- else if .Values.tallas.tMEM eq "XL" }}
+    requests.memory: 16Gi
+    limits.memory: 24Gi
+{{- else if .Values.tallas.tMEM eq "2XL" }}
+    requests.memory: 24Gi
+    limits.memory: 36Gi
+{{- else if .Values.tallas.tMEM eq "3XL" }}
+    requests.memory: 32Gi
+    limits.memory: 48Gi
+{{- else if .Values.tallas.tMEM eq "4XL" }}
+    requests.memory: 40Gi
+    limits.memory: 60Gi
+{{- else if .Values.tallas.tMEM eq "5XL" }}
+    requests.memory: 48Gi
+    limits.memory: 72Gi
+{{- else if .Values.tallas.tMEM eq "6XL" }}
+    requests.memory: 56Gi
+    limits.memory: 84Gi
+# {{- else if .Values.tallas.tMEM eq "XS" }}
+{{- else .Values.tallas.tMEM eq "XS" }}
+    requests.memory: 1Gi
+    limits.memory: 1.5Gi
+{{- end }}
+
+# Tallas Objetos
+{{- if .Values.tallas.tOBJ eq "L" }}
+    configmaps: 100
+    persistentvolumeclaims: 20
+    pods: 40
+    replicationcontrollers: 40
+    secrets: 100
+{{- else if .Values.tallas.tOBJ eq "XL" }}
+    configmaps: 200
+    persistentvolumeclaims: 40
+    pods: 80
+    replicationcontrollers: 80
+    secrets: 200
+{{- else if .Values.tallas.tOBJ eq "2XL" }}
+    configmaps: 600
+    persistentvolumeclaims: 80
+    pods: 200
+    replicationcontrollers: 200
+    secrets: 600
+# {{- else if .Values.tallas.tOBJ eq "M" }}
+{{- else }}
+    configmaps: 50
+    persistentvolumeclaims: 10
+    pods: 20
+    replicationcontrollers: 20
+    secrets: 50
+{{- end }}
+
+
+
+# ---
+# apiVersion: v1
+# kind: ResourceQuota
+# metadata:
+#   name: {{ .Values.rq.nameMEM }}
+#   namespace: {{ .Values.namespace.name }}
+# spec:
+#   hard:
+#     requests.memory: {{ .Values.rq.rMEM }}
+#     limits.memory: {{ .Values.rq.lMEM }}
+# ---
+# apiVersion: v1
+# kind: ResourceQuota
+# metadata:
+#   name: {{ .Values.rq.nameOBJ }}
+#   namespace: {{ .Values.namespace.name }}
+# spec:
+#   hard:
+#     pods: {{ .Values.rq.pods }}

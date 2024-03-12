@@ -8,18 +8,7 @@ namespace:
   name: test
 
 tallas:
-  tCPU: M
-  tMEM: L
-  tOBJ: S
-
-rq:
-  nameCPU: rq-cpu-m
-  rCPU: '500m'
-  lCPU: '2'
-  nameMEM: rq-mem-m
-  rMEM: '1Gi'
-  lMEM: '2Gi'
-  nameOBJ: rq-obj-s
-  pods: '4'
-
+  tCPU: S
+  tMEM: S
+  tOBJ: M
 
