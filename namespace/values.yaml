@@ -6,7 +6,6 @@ nameOverride: nameoverridevar
 
 namespace: 
   name: test
-  rq-name: rq-test
 
 tallas:
   tCPU: S

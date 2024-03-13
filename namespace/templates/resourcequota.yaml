@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: {{- .Values.namespace.rq-name -}}
+  name: rq-{{- .Values.namespace.name -}}
   namespace: {{ .Values.namespace.name }}
 spec:
   hard:
