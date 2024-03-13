@@ -95,18 +95,18 @@ spec:
 # apiVersion: v1
 # kind: ResourceQuota
 # metadata:
-#   name: {{ .Values.rq.nameMEM }}
+#   name: 
 #   namespace: {{ .Values.namespace.name }}
 # spec:
 #   hard:
-#     requests.memory: {{ .Values.rq.rMEM }}
-#     limits.memory: {{ .Values.rq.lMEM }}
+#     requests.memory: 
+#     limits.memory: 
 # ---
 # apiVersion: v1
 # kind: ResourceQuota
 # metadata:
-#   name: {{ .Values.rq.nameOBJ }}
+#   name: 
 #   namespace: {{ .Values.namespace.name }}
 # spec:
 #   hard:
-#     pods: {{ .Values.rq.pods }}
+#     pods: 
