@@ -56,7 +56,7 @@ spec:
     requests.memory: 56Gi
     limits.memory: 84Gi
 # {{- else if .Values.tallas.tMEM eq "XS" }}
-{{- else .Values.tallas.tMEM eq "XS" }}
+{{- else }}
     requests.memory: 1Gi
     limits.memory: 1.5Gi
 {{- end }}
