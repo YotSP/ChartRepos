@@ -2,13 +2,23 @@ apiVersion: v1
 entries:
   namespace:
   - apiVersion: v2
-    appVersion: 0.0.1
-    created: "2024-03-13T12:56:29.3120979+01:00"
+    appVersion: 0.0.2
+    created: "2024-03-13T18:38:46.4936064+01:00"
     description: A Helm chart for K8s Namespaces
-    digest: ca39ae16bcdfba1d8077c06fdf898a242495eca234a6e0ac4d7a2dfccbdf5e9a
+    digest: 4f29329b53b653765fd4796dfdb43d386e13064efd65560ff34f7008c0d033d3
+    name: namespace
+    type: application
+    urls:
+    - https://YotSP.github.io/ChartRepos/namespace-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-03-13T18:38:46.4936064+01:00"
+    description: A Helm chart for K8s Namespaces
+    digest: 50dba7fd61e6e2991e8f3494ca9e7711065907f75b7456d7cc336ffeae8394cc
     name: namespace
     type: application
     urls:
     - https://YotSP.github.io/ChartRepos/namespace-0.0.1.tgz
     version: 0.0.1
-generated: "2024-03-13T12:56:29.3120979+01:00"
+generated: "2024-03-13T18:38:46.488814+01:00"

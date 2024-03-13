@@ -6,88 +6,98 @@ metadata:
 spec:
   hard:
 # Tallas CPU
+#{{- if eq .Values.tallas.tCPU "S" }}
+{{- $rcpu := "175m" -}}
+{{- $lcpu := "250m" -}}
 {{- if eq .Values.tallas.tCPU "M" }}
-    requests.cpu: 350m
-    limits.cpu: 500m
+{{- $rcpu := "350m" -}}
+{{- $lcpu := "500m" -}}
 {{- else if eq .Values.tallas.tCPU "L" }}
-    requests.cpu: 675m
-    limits.cpu: 1
+{{- $rcpu := "675m" -}}
+{{- $lcpu := "1" -}}
 {{- else if eq .Values.tallas.tCPU "XL" }}
-    requests.cpu: 1350m
-    limits.cpu: 2
+{{- $rcpu := "1350m" -}}
+{{- $lcpu := "2" -}}
 {{- else if eq .Values.tallas.tCPU "2XL" }}
-    requests.cpu: 3350m
-    limits.cpu: 5
+{{- $rcpu := "3350m" -}}
+{{- $lcpu := "5" -}}
 {{- else if eq .Values.tallas.tCPU "3XL" }}
-    requests.cpu: 6675m
-    limits.cpu: 10
-#{{- else if eq .Values.tallas.tCPU "S" }}
-{{- else }}
-    requests.cpu: 175m
-    limits.cpu: 250m
+{{- $rcpu := "6675m" -}}
+{{- $lcpu := "10" -}}
 {{- end }}
+
+    requests.cpu: {{- $rcpu -}}
+    limits.cpu: {{- $lcpu -}}
+
 
 # Tallas Memoria
+# {{- if eq .Values.tallas.tMEM "XS" }}
+{{- $rmem := "1Gi" -}}
+{{- $lmem := "1.5Gi" -}}
 {{- if eq .Values.tallas.tMEM "S" }}
-    requests.memory: 2Gi
-    limits.memory: 3Gi
+{{- $rmem := "2Gi" -}}
+{{- $lmem := "3Gi" -}}
 {{- else if eq .Values.tallas.tMEM "M" }}
-    requests.memory: 4Gi
-    limits.memory: 6Gi
+{{- $rmem := "4Gi" -}}
+{{- $lmem := "6Gi" -}}
 {{- else if eq .Values.tallas.tMEM "L" }}
-    requests.memory: 8Gi
-    limits.memory: 12Gi
+{{- $rmem := "8Gi" -}}
+{{- $lmem := "12Gi" -}}
 {{- else if eq .Values.tallas.tMEM "XL" }}
-    requests.memory: 16Gi
-    limits.memory: 24Gi
+{{- $rmem := "16Gi" -}}
+{{- $lmem := "24Gi" -}}
 {{- else if eq .Values.tallas.tMEM "2XL" }}
-    requests.memory: 24Gi
-    limits.memory: 36Gi
+{{- $rmem := "24Gi" -}}
+{{- $lmem := "36Gi" -}}
 {{- else if eq .Values.tallas.tMEM "3XL" }}
-    requests.memory: 32Gi
-    limits.memory: 48Gi
+{{- $rmem := "32Gi" -}}
+{{- $lmem := "48Gi" -}}
 {{- else if eq .Values.tallas.tMEM "4XL" }}
-    requests.memory: 40Gi
-    limits.memory: 60Gi
+{{- $rmem := "40Gi" -}}
+{{- $lmem := "60Gi" -}}
 {{- else if eq .Values.tallas.tMEM "5XL" }}
-    requests.memory: 48Gi
-    limits.memory: 72Gi
+{{- $rmem := "48Gi" -}}
+{{- $lmem := "72Gi" -}}
 {{- else if eq .Values.tallas.tMEM "6XL" }}
-    requests.memory: 56Gi
-    limits.memory: 84Gi
-# {{- else if eq .Values.tallas.tMEM "XS" }}
-{{- else }}
-    requests.memory: 1Gi
-    limits.memory: 1.5Gi
+{{- $rmem := "56Gi" -}}
+{{- $lmem := "84Gi" -}}
 {{- end }}
 
+    requests.memory: {{- $rmem -}}
+    limits.memory: {{- $lmem -}}
+
 # Tallas Objetos
-{{- if eq .Values.tallas.tOBJ "L" }}
-    configmaps: 100
-    persistentvolumeclaims: 20
-    pods: 40
-    replicationcontrollers: 40
-    secrets: 100
-{{- else if eq .Values.tallas.tOBJ "XL" }}
-    configmaps: 200
-    persistentvolumeclaims: 40
-    pods: 80
-    replicationcontrollers: 80
-    secrets: 200
-{{- else if eq .Values.tallas.tOBJ "2XL" }}
-    configmaps: 600
-    persistentvolumeclaims: 80
-    pods: 200
-    replicationcontrollers: 200
-    secrets: 600
 # {{- else if eq .Values.tallas.tOBJ "M" }}
-{{- else }}
-    configmaps: 50
-    persistentvolumeclaims: 10
-    pods: 20
-    replicationcontrollers: 20
-    secrets: 50
+{{- $cm := 50 -}}
+{{- $pvc := 10 -}}
+{{- $pods := 20 -}}
+{{- $rc := 20 -}}
+{{- $secrets := 100 -}}
+{{- if eq .Values.tallas.tOBJ "L" }}
+{{- $cm := 100 -}}
+{{- $pvc := 20 -}}
+{{- $pods := 40 -}}
+{{- $rc := 40 -}}
+{{- $secrets := 100 -}}
+{{- else if eq .Values.tallas.tOBJ "XL" }}
+{{- $cm := 200 -}}
+{{- $pvc := 40 -}}
+{{- $pods := 80 -}}
+{{- $rc := 80 -}}
+{{- $secrets := 200 -}}
+{{- else if eq .Values.tallas.tOBJ "2XL" }}
+{{- $cm := 600 -}}
+{{- $pvc := 80 -}}
+{{- $pods := 200 -}}
+{{- $rc :=  -}}
+{{- $secrets := 600 -}}
 {{- end }}
+
+    configmaps: {{- $cm -}}
+    persistentvolumeclaims: {{- $pvc -}}
+    pods: {{- $pods -}}
+    replicationcontrollers: {{- $rc -}}
+    secrets: {{- $secrets -}}
 
 
 
