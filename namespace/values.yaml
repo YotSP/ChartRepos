@@ -5,6 +5,7 @@
 namespace: 
   name: test
 
+# Valores por defecto
 tallas:
   tCPU: XS
   tMEM: XS
