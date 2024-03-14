@@ -98,25 +98,3 @@ spec:
     pods: {{- $pods -}}
     replicationcontrollers: {{- $rc -}}
     secrets: {{- $secrets -}}
-
-
-
-# ---
-# apiVersion: v1
-# kind: ResourceQuota
-# metadata:
-#   name: 
-#   namespace: {{ .Values.namespace.name }}
-# spec:
-#   hard:
-#     requests.memory: 
-#     limits.memory: 
-# ---
-# apiVersion: v1
-# kind: ResourceQuota
-# metadata:
-#   name: 
-#   namespace: {{ .Values.namespace.name }}
-# spec:
-#   hard:
-#     pods: 
